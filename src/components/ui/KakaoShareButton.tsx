@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { KAKAO_APP_KEY } from '@/components/contact/KakaoMap';
 import { SITE_CONFIG } from '@/constants/site';
+import { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
@@ -56,8 +56,8 @@ export default function KakaoShareButton() {
       return;
     }
     const url = SITE_CONFIG.shareUrl;
-    const shareOrigin = new URL(SITE_CONFIG.shareUrl).origin;
-    const imageUrl = `${shareOrigin}${SITE_CONFIG.ogImage}`;
+    const shareOrigin = new URL("https://happykids-phi.vercel.app/contact").origin;
+    const imageUrl = `${shareOrigin}/og/happykids-og.png`;
 
     try {
       window.Kakao.Share.sendDefault({
@@ -92,9 +92,8 @@ export default function KakaoShareButton() {
     <button
       type="button"
       onClick={handleShare}
-      className={`fixed left-4 bottom-5 z-50 flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-200 bg-[#FEE500] text-[#3C1E1E] font-bold ${
-        isDisabled ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-xl hover:-translate-y-0.5'
-      }`}
+      className={`fixed left-4 bottom-5 z-50 flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-200 bg-[#FEE500] text-[#3C1E1E] font-bold ${isDisabled ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-xl hover:-translate-y-0.5'
+        }`}
       aria-label="카카오톡으로 페이지 공유"
       disabled={isDisabled}
     >
