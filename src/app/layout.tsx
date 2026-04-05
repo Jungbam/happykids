@@ -1,14 +1,22 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_KR } from 'next/font/google';
+import { Gaegu, Gowun_Dodum } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileCallButton from '@/components/ui/MobileCallButton';
+import KakaoShareButton from '@/components/ui/KakaoShareButton';
+import BgmToggle from '@/components/ui/BgmToggle';
 
-const notoSansKR = Noto_Sans_KR({
+const gaegu = Gaegu({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-noto-sans-kr',
+  weight: ['400', '700'],
+  variable: '--font-heading',
+});
+
+const gowunDodum = Gowun_Dodum({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-body',
 });
 
 export const metadata: Metadata = {
@@ -23,11 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={notoSansKR.variable}>
-      <body className="font-[family-name:var(--font-noto-sans-kr)] antialiased">
+    <html lang="ko" className={`${gaegu.variable} ${gowunDodum.variable}`}>
+      <body className="font-[family-name:var(--font-body)] antialiased">
         <Header />
         {children}
         <Footer />
+        <KakaoShareButton />
+        <BgmToggle />
         <MobileCallButton />
       </body>
     </html>

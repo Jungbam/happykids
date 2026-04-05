@@ -43,6 +43,7 @@ export default function HistoryPage() {
         badge="연혁·수상"
         title="20년의 신뢰, 검증된 보육"
         subtitle="2006년 개원 이후 꾸준히 성장해온 해피키즈의 발자취입니다"
+        backgroundImageSrc="/images/hero-history.svg"
       />
 
       {/* 신뢰 지표 요약 */}
@@ -119,6 +120,8 @@ export default function HistoryPage() {
             title="검증된 해피키즈에서 안심 보육을 시작하세요"
             primaryButtonText="입소 상담 문의"
             primaryButtonHref="/contact"
+            imageSrc="/images/cta-history.svg"
+            imageAlt="해피키즈 연혁 CTA 이미지"
           />
         </div>
       </section>

@@ -51,6 +51,7 @@ export default function AdmissionPage() {
         badge="입소 안내"
         title="입소 준비, 한눈에 확인하세요"
         subtitle="해피키즈 입소에 필요한 모든 정보를 안내해드립니다"
+        backgroundImageSrc="/images/hero-admission.svg"
       />
 
       {/* 운영 정보 카드 */}
@@ -171,6 +172,8 @@ export default function AdmissionPage() {
             title="입소에 대해 더 궁금하신 점이 있으신가요?"
             primaryButtonText="입소 상담 문의"
             primaryButtonHref="/contact"
+            imageSrc="/images/cta-admission.svg"
+            imageAlt="입소 상담 CTA 이미지"
           />
         </div>
       </section>

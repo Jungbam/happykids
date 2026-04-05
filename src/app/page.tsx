@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
@@ -82,8 +83,16 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero 섹션 */}
-      <section className="bg-linear-to-b from-[#FFF3E0] to-bg py-20 md:py-28">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <Image
+          src="/images/hero-home.svg"
+          alt="해피키즈 어린이집 분위기"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-[#FFF3E0]/85 via-bg/80 to-bg/95" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8 text-center">
           <SectionBadge>안양 만안구 공공형 어린이집</SectionBadge>
           <h1 className="text-3xl md:text-5xl font-extrabold text-dark mt-6 leading-tight">
             아이에게는 편안한 하루,<br />부모에게는 안심되는 선택
@@ -233,6 +242,8 @@ export default function HomePage() {
             primaryButtonHref="/contact"
             secondaryButtonText="오시는 길"
             secondaryButtonHref="/contact"
+            imageSrc="/images/cta-home.svg"
+            imageAlt="해피키즈 상담 안내 이미지"
           />
         </div>
       </section>

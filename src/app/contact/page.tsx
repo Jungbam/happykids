@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
@@ -26,6 +27,7 @@ export default function ContactPage() {
         badge="오시는 길·상담"
         title="언제든지 문의해주세요"
         subtitle="해피키즈 어린이집 방문과 상담을 환영합니다"
+        backgroundImageSrc="/images/hero-contact.svg"
       />
 
       {/* 연락처 + 지도 */}
@@ -70,7 +72,11 @@ export default function ContactPage() {
       {/* 빠른 문의 CTA */}
       <section className="bg-white py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative w-full max-w-md h-44 rounded-2xl overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+              <Image src="/images/cta-home.svg" alt="상담 예약 안내 이미지" fill className="object-cover" />
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={`tel:${SITE_CONFIG.phone}`}
               className="bg-primary text-dark font-bold px-8 py-4 rounded-full hover:bg-primary/80 transition-colors duration-200"
@@ -83,6 +89,7 @@ export default function ContactPage() {
             >
               🗓️ 방문 상담 예약
             </Link>
+            </div>
           </div>
         </div>
       </section>

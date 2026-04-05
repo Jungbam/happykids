@@ -54,6 +54,7 @@ export default function CommunicationPage() {
         badge="부모와의 소통"
         title="함께 키우는 따뜻한 보육"
         subtitle="부모님과의 소통을 가장 소중히 여기는 해피키즈입니다"
+        backgroundImageSrc="/images/hero-communication.svg"
       />
 
       {/* 부모참여 문화 */}
@@ -140,6 +141,8 @@ export default function CommunicationPage() {
             title="소통에 대해 더 알고 싶으신가요?"
             primaryButtonText="입소 상담 문의"
             primaryButtonHref="/contact"
+            imageSrc="/images/cta-communication.svg"
+            imageAlt="부모 소통 CTA 이미지"
           />
         </div>
       </section>

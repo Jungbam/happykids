@@ -56,6 +56,7 @@ export default function AboutPage() {
         badge="어린이집 소개"
         title="아이를 존중하는 따뜻한 보육"
         subtitle="해피키즈 어린이집의 교육 철학과 운영 방향을 소개합니다"
+        backgroundImageSrc="/images/hero-about.svg"
       />
 
       {/* 인사말 섹션 */}
@@ -154,6 +155,8 @@ export default function AboutPage() {
             title="해피키즈 어린이집이 궁금하신가요?"
             primaryButtonText="방문 상담 예약"
             primaryButtonHref="/contact"
+            imageSrc="/images/cta-about.svg"
+            imageAlt="해피키즈 소개 CTA 이미지"
           />
         </div>
       </section>

@@ -52,6 +52,7 @@ export default function ProgramsPage() {
         badge="프로그램 안내"
         title="아이의 하루가 즐겁게 자라는 곳"
         subtitle="체계적인 보육과 다양한 체험으로 아이의 성장을 돕습니다"
+        backgroundImageSrc="/images/hero-programs.svg"
       />
 
       {/* 하루 일과 타임라인 */}
@@ -150,6 +151,8 @@ export default function ProgramsPage() {
             title="프로그램에 대해 더 궁금하신가요?"
             primaryButtonText="입소 상담 문의"
             primaryButtonHref="/contact"
+            imageSrc="/images/cta-programs.svg"
+            imageAlt="해피키즈 프로그램 CTA 이미지"
           />
         </div>
       </section>

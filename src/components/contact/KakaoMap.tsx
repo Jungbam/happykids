@@ -15,7 +15,7 @@ interface KakaoMapProps {
   markerTitle?: string;
 }
 
-const KAKAO_APP_KEY = 'c8aa7250e5ebd0029a147b1d90e8f751';
+export const KAKAO_APP_KEY = 'c8aa7250e5ebd0029a147b1d90e8f751';
 
 export default function KakaoMap({
   latitude = 37.3943,

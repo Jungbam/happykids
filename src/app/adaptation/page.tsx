@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
@@ -77,6 +78,7 @@ export default function AdaptationPage() {
         badge="적응 프로그램"
         title="첫 등원이 안심되는 단계별 적응"
         subtitle="아이의 마음을 이해하고 천천히 적응할 수 있도록 돕습니다"
+        backgroundImageSrc="/images/hero-adaptation.svg"
       />
 
       {/* 적응 프로그램 중요성 */}
@@ -162,19 +164,24 @@ export default function AdaptationPage() {
       {/* CTA */}
       <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <Card variant="highlight" className="text-center">
-            <h3 className="text-2xl font-extrabold text-dark mb-3">
+          <Card variant="highlight" className="text-center md:text-left md:flex md:items-center md:justify-between gap-6">
+            <div>
+              <h3 className="text-2xl font-extrabold text-dark mb-3">
               우리 아이 적응이 걱정되시나요?
-            </h3>
-            <p className="text-muted mb-6">
-              개별 상담으로 아이의 성향에 맞는 적응 계획을 안내해드립니다
-            </p>
-            <Link
-              href="/contact"
-              className="bg-primary text-dark font-bold px-8 py-4 rounded-full inline-block hover:bg-primary/80 transition-colors duration-200"
-            >
-              적응 상담 신청하기
-            </Link>
+              </h3>
+              <p className="text-muted mb-6">
+                개별 상담으로 아이의 성향에 맞는 적응 계획을 안내해드립니다
+              </p>
+              <Link
+                href="/contact"
+                className="bg-primary text-dark font-bold px-8 py-4 rounded-full inline-block hover:bg-primary/80 transition-colors duration-200"
+              >
+                적응 상담 신청하기
+              </Link>
+            </div>
+            <div className="relative w-full md:w-60 h-40 rounded-2xl overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+              <Image src="/images/cta-adaptation.svg" alt="적응 상담 안내 이미지" fill className="object-cover" />
+            </div>
           </Card>
         </div>
       </section>

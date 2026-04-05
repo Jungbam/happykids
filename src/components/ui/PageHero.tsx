@@ -1,13 +1,31 @@
+import Image from 'next/image';
+
 interface PageHeroProps {
   title: string;
   subtitle?: string;
   badge?: string;
+  backgroundImageSrc?: string;
 }
 
-export default function PageHero({ title, subtitle, badge }: PageHeroProps) {
+export default function PageHero({
+  title,
+  subtitle,
+  badge,
+  backgroundImageSrc,
+}: PageHeroProps) {
   return (
-    <section className="bg-gradient-to-b from-[#FFF3E0] to-[#FFF9F1] py-16 md:py-20">
-      <div className="max-w-4xl mx-auto px-4 text-center">
+    <section className="relative overflow-hidden py-16 md:py-20">
+      {backgroundImageSrc && (
+        <Image
+          src={backgroundImageSrc}
+          alt="페이지 배경 이미지"
+          fill
+          className="object-cover"
+          priority
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF3E0]/90 via-[#FFF9F1]/85 to-[#FFF9F1]/95" />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         {badge && (
           <span className="bg-primary/20 text-dark text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4">
             {badge}
