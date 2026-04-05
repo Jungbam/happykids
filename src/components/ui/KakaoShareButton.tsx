@@ -23,22 +23,7 @@ export default function KakaoShareButton() {
       return;
     }
 
-    const existing = document.querySelector<HTMLScriptElement>('script[data-kakao-sdk]');
-    if (existing) {
-      existing.addEventListener('load', () => initKakao());
-      initKakao();
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
-    script.async = true;
-    script.dataset.kakaoSdk = 'true';
-    script.onload = () => initKakao();
-    script.onerror = () => setStatus('error');
-    document.head.appendChild(script);
-
-    function initKakao() {
+    const initKakao = () => {
       if (!window.Kakao) {
         setStatus('error');
         return;
@@ -47,7 +32,27 @@ export default function KakaoShareButton() {
         window.Kakao.init(KAKAO_APP_KEY);
       }
       setStatus('ready');
+    };
+
+    if (window.Kakao) {
+      initKakao();
+      return;
     }
+
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src*="developers.kakao.com/sdk/js/kakao"]'
+    );
+    if (existing) {
+      existing.addEventListener('load', initKakao);
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+    script.async = true;
+    script.onload = () => initKakao();
+    script.onerror = () => setStatus('error');
+    document.head.appendChild(script);
   }, []);
 
   const handleShare = () => {
