@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { KAKAO_APP_KEY } from '@/components/contact/KakaoMap';
+import { SITE_CONFIG } from '@/constants/site';
 
 declare global {
   interface Window {
     Kakao?: any;
   }
 }
-
-const SHARE_TITLE = '해피키즈';
-const SHARE_DESCRIPTION = '행복한 아이들을 만드는 공간';
 
 export default function KakaoShareButton() {
   const [status, setStatus] = useState<'loading' | 'ready' | 'error' | 'no-key'>('loading');
@@ -58,14 +56,14 @@ export default function KakaoShareButton() {
       return;
     }
     const url = window.location.href;
-    const imageUrl = `${window.location.origin}/images/share-cover.svg`;
+    const imageUrl = `${window.location.origin}${SITE_CONFIG.ogImage}`;
 
     try {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: SHARE_TITLE,
-          description: SHARE_DESCRIPTION,
+          title: SITE_CONFIG.shareTitle,
+          description: SITE_CONFIG.shareDescription,
           imageUrl,
           link: {
             mobileWebUrl: url,

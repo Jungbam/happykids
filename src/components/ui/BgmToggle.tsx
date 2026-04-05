@@ -7,7 +7,7 @@ const DEFAULT_VOLUME = 0.35;
 
 export default function BgmToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false);
   const [blocked, setBlocked] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function BgmToggle() {
     }
 
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    const initial = stored === null ? true : stored === 'true';
+    const initial = stored === null ? false : stored === 'true';
     setEnabled(initial);
 
     const audio = new Audio('/audio/happykids-song.mp3');
@@ -63,7 +63,7 @@ export default function BgmToggle() {
     <button
       type="button"
       onClick={toggle}
-      className={`fixed right-4 bottom-20 md:bottom-5 z-50 flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-200 bg-secondary text-white font-bold ${
+      className={`fixed right-4 bottom-20 md:bottom-5 z-50 hidden md:flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-200 bg-secondary text-white font-bold ${
         enabled ? 'hover:shadow-xl hover:-translate-y-0.5' : 'opacity-80'
       }`}
       aria-label="배경음악 켜기 또는 끄기"
