@@ -9,6 +9,7 @@ declare global {
 }
 
 interface KakaoMapProps {
+  address?: string;
   latitude?: number;
   longitude?: number;
   level?: number;
@@ -18,6 +19,7 @@ interface KakaoMapProps {
 export const KAKAO_APP_KEY = 'c8aa7250e5ebd0029a147b1d90e8f751';
 
 export default function KakaoMap({
+  address,
   latitude = 37.3943,
   longitude = 126.9268,
   level = 3,
@@ -55,7 +57,7 @@ export default function KakaoMap({
 
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_APP_KEY}&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_APP_KEY}&autoload=false&libraries=services`;
     script.onload = () => {
       window.kakao.maps.load(() => createMap());
     };
@@ -68,23 +70,42 @@ export default function KakaoMap({
         return;
       }
 
-      const center = new window.kakao.maps.LatLng(latitude, longitude);
-      const map = new window.kakao.maps.Map(mapRef.current, { center, level });
+      const fallbackCenter = new window.kakao.maps.LatLng(latitude, longitude);
+      const map = new window.kakao.maps.Map(mapRef.current, { center: fallbackCenter, level });
 
-      const marker = new window.kakao.maps.Marker({ position: center });
+      const marker = new window.kakao.maps.Marker();
       marker.setMap(map);
 
       const infowindow = new window.kakao.maps.InfoWindow({
         content: `<div style="padding:5px;font-size:13px;font-weight:bold;">${markerTitle}</div>`,
       });
-      infowindow.open(map, marker);
 
       const zoomControl = new window.kakao.maps.ZoomControl();
       map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
-      setStatus('ready');
+      const applyPosition = (lat: number, lng: number) => {
+        const center = new window.kakao.maps.LatLng(lat, lng);
+        map.setCenter(center);
+        marker.setPosition(center);
+        infowindow.open(map, marker);
+        setStatus('ready');
+      };
+
+      if (address && window.kakao.maps.services) {
+        const geocoder = new window.kakao.maps.services.Geocoder();
+        geocoder.addressSearch(address, (result: any[], status: string) => {
+          if (status === window.kakao.maps.services.Status.OK && result[0]) {
+            applyPosition(Number(result[0].y), Number(result[0].x));
+          } else {
+            applyPosition(latitude, longitude);
+          }
+        });
+        return;
+      }
+
+      applyPosition(latitude, longitude);
     }
-  }, [latitude, longitude, level, markerTitle]);
+  }, [address, latitude, longitude, level, markerTitle]);
 
   if (status === 'no-key') {
     return (

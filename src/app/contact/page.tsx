@@ -49,7 +49,7 @@ export default function ContactPage() {
               </div>
             </Card>
 
-            <KakaoMap />
+            <KakaoMap address={SITE_CONFIG.address} />
           </div>
         </div>
       </section>

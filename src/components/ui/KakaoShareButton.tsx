@@ -55,8 +55,9 @@ export default function KakaoShareButton() {
     if (status !== 'ready' || !window.Kakao) {
       return;
     }
-    const url = window.location.href;
-    const imageUrl = `${window.location.origin}${SITE_CONFIG.ogImage}`;
+    const url = SITE_CONFIG.shareUrl;
+    const shareOrigin = new URL(SITE_CONFIG.shareUrl).origin;
+    const imageUrl = `${shareOrigin}${SITE_CONFIG.ogImage}`;
 
     try {
       window.Kakao.Share.sendDefault({
