@@ -1,7 +1,6 @@
 'use client';
 
 import { KAKAO_APP_KEY } from '@/components/contact/KakaoMap';
-import { SITE_CONFIG } from '@/constants/site';
 import { useEffect, useState } from 'react';
 
 declare global {
@@ -55,16 +54,15 @@ export default function KakaoShareButton() {
     if (status !== 'ready' || !window.Kakao) {
       return;
     }
-    const url = SITE_CONFIG.shareUrl;
-    const shareOrigin = new URL("https://happykids-phi.vercel.app/contact").origin;
-    const imageUrl = `${shareOrigin}/og/happykids-og.png`;
+    const url = 'https://happykids-phi.vercel.app';
+    const imageUrl = 'https://happykids-phi.vercel.app/og/happykids-og.png';
 
     try {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: SITE_CONFIG.shareTitle,
-          description: SITE_CONFIG.shareDescription,
+          title: '해피키즈',
+          description: '행복한 아이들을 만드는 공간',
           imageUrl,
           link: {
             mobileWebUrl: url,
