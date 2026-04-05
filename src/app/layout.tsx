@@ -20,12 +20,11 @@ const gowunDodum = Gowun_Dodum({
   variable: '--font-body',
 });
 
-const ogImageUrl = `${SITE_CONFIG.siteUrl}${SITE_CONFIG.ogImage}`;
-
 export const metadata: Metadata = {
   title: '해피키즈 어린이집 | 안양시 만안구 공공형 어린이집',
   description: '국가가 지원하고 부모가 신뢰하는 공공형 어린이집. 아이의 하루가 즐겁고 안전하게 자라는 해피키즈 어린이집입니다.',
   keywords: ['안양 어린이집', '만안구 어린이집', '공공형 어린이집', '안양시 영아 어린이집'],
+  metadataBase: new URL(SITE_CONFIG.siteUrl),
   openGraph: {
     type: 'website',
     url: SITE_CONFIG.siteUrl,
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.shareDescription,
     images: [
       {
-        url: ogImageUrl,
+        url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
         alt: SITE_CONFIG.name,
@@ -44,7 +43,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_CONFIG.shareTitle,
     description: SITE_CONFIG.shareDescription,
-    images: [ogImageUrl],
+    images: [SITE_CONFIG.ogImage],
+  },
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
   },
 };
 

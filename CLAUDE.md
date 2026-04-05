@@ -1,6 +1,6 @@
 ## Crew 현재 상태
 
-- Last updated: 2026-04-05T23:00:58+09:00
+- Last updated: 2026-04-05T23:19:33+09:00
 - Active sprint: none
 
 ### In Progress
@@ -9,10 +9,10 @@
 ### In Review
 - none
 
-### Latest Planning Artifacts
-- PRD: .crew/artifacts/prd/happykids-og-share-prd.md
-- Design: .crew/artifacts/design/happykids-og-share-design.md
+### Latest Artifacts
+- Review: .crew/artifacts/review/review-2026-04-05-231851.md
 
 ### Suggested Next Commands
+- /crew:review .
 - /crew:dev happykids-og-share
-- /crew:sprint plan
+- /crew:sprint status
