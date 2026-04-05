@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
 import CTABanner from '@/components/ui/CTABanner';
+
+export const metadata: Metadata = {
+  title: '부모와의 소통 | 해피키즈 어린이집',
+  description: '알림장, 상담, 부모참여수업 등 열린 소통으로 함께 키우는 해피키즈 어린이집.',
+};
 
 const parentEvents = [
   { emoji: '🏃', title: '가족운동회', desc: '온 가족이 함께 뛰고 웃는 연례 행사' },

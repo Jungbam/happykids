@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
 import CTABanner from '@/components/ui/CTABanner';
+
+export const metadata: Metadata = {
+  title: '연혁·수상 | 해피키즈 어린이집',
+  description: '2006년 개원 이후 20년의 성장 기록. 보건복지부 장관상, 경기도 우수어린이집 등 다수 수상.',
+};
 
 const trustStats = [
   { value: '20년+', label: '운영 경력' },

@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
 import CTABanner from '@/components/ui/CTABanner';
+
+export const metadata: Metadata = {
+  title: '입소 안내 | 해피키즈 어린이집',
+  description: '운영시간, 보육료, 입소 절차, 준비물 등 입소에 필요한 모든 정보를 안내합니다.',
+};
 
 const operationInfo = [
   { emoji: '⏰', title: '기본보육', desc: '평일 07:30 ~ 16:00' },

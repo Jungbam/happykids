@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
+
+export const metadata: Metadata = {
+  title: '적응 프로그램 | 해피키즈 어린이집',
+  description: '5단계 맞춤 적응 프로그램으로 첫 등원이 안심되는 해피키즈 어린이집.',
+};
 
 const adaptationSteps = [
   {

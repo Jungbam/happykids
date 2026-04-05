@@ -3,17 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-
-const navItems = [
-  { label: '홈', href: '/' },
-  { label: '어린이집 소개', href: '/about' },
-  { label: '연혁·수상', href: '/history' },
-  { label: '프로그램', href: '/programs' },
-  { label: '적응 프로그램', href: '/adaptation' },
-  { label: '입소 안내', href: '/admission' },
-  { label: '부모와의 소통', href: '/communication' },
-  { label: '오시는 길', href: '/contact' },
-];
+import { NAV_ITEMS } from '@/constants/navigation';
 
 export default function Header() {
   const pathname = usePathname();
@@ -45,7 +35,7 @@ export default function Header() {
 
           {/* 데스크탑 네비게이션 */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -94,7 +84,7 @@ export default function Header() {
           style={{ top: '64px' }}
         >
           <nav className="flex flex-col px-8 py-6 gap-0">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

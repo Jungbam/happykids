@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
 import CTABanner from '@/components/ui/CTABanner';
+
+export const metadata: Metadata = {
+  title: '프로그램 안내 | 해피키즈 어린이집',
+  description: '오감놀이, 체육, 영어, 생태체험 등 다양한 프로그램. 해피키즈의 하루 일과를 소개합니다.',
+};
 
 const dailySchedule = [
   { range: '07:30~09:00', emoji: '🌅', activity: '등원 및 자유놀이', bg: 'bg-[rgba(255,215,106,0.1)]' },

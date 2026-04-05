@@ -24,9 +24,14 @@ export default function KakaoMap({
   markerTitle = '해피키즈 어린이집',
 }: KakaoMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error' | 'no-key'>('loading');
 
   useEffect(() => {
+    if (!KAKAO_APP_KEY) {
+      setStatus('no-key');
+      return;
+    }
+
     if (window.kakao?.maps?.LatLng) {
       createMap();
       return;
@@ -34,7 +39,17 @@ export default function KakaoMap({
 
     const existing = document.querySelector('script[src*="dapi.kakao.com"]');
     if (existing) {
-      existing.addEventListener('load', () => createMap());
+      // 스크립트는 있지만 아직 maps.load 전일 수 있음
+      const waitAndInit = () => {
+        if (window.kakao?.maps) {
+          window.kakao.maps.load(() => createMap());
+        } else {
+          existing.addEventListener('load', () => {
+            window.kakao.maps.load(() => createMap());
+          });
+        }
+      };
+      waitAndInit();
       return;
     }
 
@@ -70,6 +85,16 @@ export default function KakaoMap({
       setStatus('ready');
     }
   }, [latitude, longitude, level, markerTitle]);
+
+  if (status === 'no-key') {
+    return (
+      <div className="bg-border-brand rounded-2xl h-[300px] flex flex-col items-center justify-center gap-2">
+        <span className="text-5xl">📍</span>
+        <p className="text-dark font-bold text-lg">지도 영역</p>
+        <p className="text-muted text-sm">지도 API 키가 설정되지 않았습니다</p>
+      </div>
+    );
+  }
 
   if (status === 'error') {
     return (

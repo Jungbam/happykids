@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface CTABannerProps {
   title: string;
   subtitle?: string;
@@ -24,19 +26,19 @@ export default function CTABanner({
         )}
       </div>
       <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-        <a
+        <Link
           href={primaryButtonHref}
           className="bg-dark text-white px-8 py-4 rounded-full font-bold hover:bg-dark/90 transition-colors duration-200 text-center"
         >
           {primaryButtonText}
-        </a>
+        </Link>
         {secondaryButtonText && secondaryButtonHref && (
-          <a
+          <Link
             href={secondaryButtonHref}
             className="border-2 border-dark text-dark px-8 py-4 rounded-full font-bold hover:bg-dark hover:text-white transition-colors duration-200 text-center"
           >
             {secondaryButtonText}
-          </a>
+          </Link>
         )}
       </div>
     </div>

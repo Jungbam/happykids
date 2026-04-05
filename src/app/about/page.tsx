@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
+import { SITE_CONFIG } from '@/constants/site';
 import PageHero from '@/components/ui/PageHero';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Card from '@/components/ui/Card';
 import CTABanner from '@/components/ui/CTABanner';
+
+export const metadata: Metadata = {
+  title: '어린이집 소개 | 해피키즈 어린이집',
+  description: '해피키즈 어린이집의 교육 철학과 운영 방향을 소개합니다. 2006년 개원, 공공형 어린이집.',
+};
 
 const philosophies = [
   { emoji: '🛡️', title: '안전' },
@@ -35,10 +42,10 @@ const specialReasons = [
 ];
 
 const facilityInfo = [
-  { label: '기관명', value: '해피키즈 어린이집' },
+  { label: '기관명', value: SITE_CONFIG.name },
   { label: '개원일', value: '2006년' },
-  { label: '주소', value: '경기도 안양시 만안구' },
-  { label: '전화', value: '031-XXX-XXXX' },
+  { label: '주소', value: SITE_CONFIG.address },
+  { label: '전화', value: SITE_CONFIG.phone },
   { label: '교직원', value: '원장 1명, 보육교사 8명, 조리사 1명' },
 ];
 
@@ -128,7 +135,7 @@ export default function AboutPage() {
             </h2>
           </div>
           <Card>
-            <dl className="divide-y divide-[#F0E8DC]">
+            <dl className="divide-y divide-border-brand">
               {facilityInfo.map((item) => (
                 <div key={item.label} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 py-4 first:pt-0 last:pb-0">
                   <dt className="text-sm font-bold text-muted w-28 shrink-0">{item.label}</dt>

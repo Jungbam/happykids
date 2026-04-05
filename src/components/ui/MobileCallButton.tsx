@@ -1,11 +1,13 @@
 'use client';
 
+import { SITE_CONFIG } from '@/constants/site';
+
 export default function MobileCallButton() {
   return (
     <a
-      href="tel:031-000-0000"
+      href={`tel:${SITE_CONFIG.phone}`}
       className="fixed bottom-5 right-4 z-50 md:hidden flex items-center gap-2 bg-primary text-dark font-bold px-5 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
-      aria-label="상담 전화 031-000-0000"
+      aria-label={`상담 전화 ${SITE_CONFIG.phone}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
